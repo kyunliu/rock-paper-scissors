@@ -18,10 +18,10 @@
             return array[randomChoice];
         }    
 
-        let playerSelection = prompt("Choose rock, paper, or scissors.", ''.toLowerCase());
-        const computerSelection = getComputerChoice(array);
+        function playRound() {
+            let playerSelection = prompt("Choose rock, paper, or scissors.", ''.toLowerCase());
+            let computerSelection = getComputerChoice();
 
-        function playRound(playerSelection, computerSelection) {
             if(playerSelection === computerSelection) {
                 return ("You tied!");
             }else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
@@ -30,18 +30,23 @@
             }else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
                 playerPoints ++;
                 return ("You win! " + playerSelection + " beats " + computerSelection);
+            }else if (playerPoints === 5){
+                return ("Congrats! You won 5 games.")
+            }else if (computerPoints === 5){
+                return ("Sorry you lost!")
+            }else{
+                return ("Please type rock, paper, or scissors.")
             }
         }
 
         function game() {
             for (let i = 0; playerPoints <= 5 && computerPoints <= 5; i++){
-                console.log(playRound (playerSelection, computerSelection));
+                console.log(playRound ());
                 console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
-                return game(playerSelection = prompt("Choose rock, paper, or scissors."));
                 }
             }
 
-        console.log(game(playerSelection, computerSelection));
+        console.log(game());
 
 
 
