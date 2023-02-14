@@ -9,6 +9,8 @@
 </head>
 <body>
     <script>
+        let playerPoints = 0;
+        let computerPoints = 0;
         const array = ["Rock", "Paper", "Scissors"];
 
         function getComputerChoice(choices){
@@ -16,27 +18,26 @@
             const item = choices[randomChoice];
             return item;
         }    
-
         function playRound(playerSelection, computerSelection) {
             if(playerSelection === computerSelection) {
                 return ("You tied!");
             }else if (playerSelection === "Rock" && computerSelection === "Paper" || playerSelection === "Paper" && computerSelection === "Scissors" || playerSelection === "Scissors" && computerSelection === "Rock") {
+                playerPoints +=1;
                 return ("You lose! " + computerSelection + " beats " + playerSelection);
             }else if (playerSelection === "Rock" && computerSelection === "Scissors" || playerSelection === "Paper" && computerSelection === "Rock"|| playerSelection === "Scissors" && computerSelection === "Paper") {
-                return ("You win!" + playerSelection + " beats " + computerSelection);
+                computerPoints +=1;
+                return ("You win! " + playerSelection + " beats " + computerSelection);
             }
         }
-        const playerSelection = "rock";
-        const playerSelection2 = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-        const computerSelection = getComputerChoice(array);
-        console.log(playRound(playerSelection2, computerSelection));
 
         function game() {
-            for (let i = 0; i < 5; i++){
-
+            for (let i = 1; playerPoints <= 5 && computerPoints <= 5; i++){
+                playRound (playerSelection2, computerSelection);
+                return("You currently have " + playerPoints + ".The computer has " + computerPoints + ".")
+                }
             }
-        }
-          
+        console.log(game());
+        
     </script>
 </body>
 </html>
