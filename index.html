@@ -9,17 +9,22 @@
 </head>
 <body>
     <script>
+        /* Define playerPoints and computerPoints to start at 0 */
         let playerPoints = 0;
         let computerPoints = 0;
+
+        /* The computer will select from this array */
         const array = ["rock", "paper", "scissors"];
 
+        /* Using the Math function to select position in Array */
         function getComputerChoice(){
             const randomChoice = Math.floor(Math.random() * array.length);
             return array[randomChoice];
         }    
 
         function playRound() {
-            let playerSelection = prompt("Choose rock, paper, or scissors.", ''.toLowerCase());
+            /* Set all prompt answers to lowercase */
+            let playerSelection = prompt("Choose rock, paper, or scissors. First to five points win.", ''.toLowerCase());
             let computerSelection = getComputerChoice();
             if(playerSelection === computerSelection) {
                 return ("You tied!");
@@ -35,6 +40,7 @@
         }
 
         function game() {
+            /* Loop round until player or computer reaches 5 points */
             for (let i = 0; playerPoints < 5 && computerPoints < 5; i++){
                 console.log(playRound());
                 console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
@@ -47,8 +53,6 @@
         }
 
         console.log(game());
-
-
 
     </script>
 </body>
