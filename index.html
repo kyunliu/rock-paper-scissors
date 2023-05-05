@@ -5,16 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <div id="buttons">
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
+    </div>
     <script>
         /* Define playerPoints and computerPoints to start at 0 */
         let playerPoints = 0;
         let computerPoints = 0;
 
+
         /* The computer will select from this array */
-        const array = ["rock", "paper", "scissors"];
+        const array = ["Rock", "Paper", "Scissors"];
 
         /* Using the Math function to select position in Array */
         function getComputerChoice(){
@@ -22,41 +29,44 @@
             return array[randomChoice];
         }    
 
-        function playRound() {
+        function playRound(playerSelection) {
             /* Set all prompt answers to lowercase */
-            let playerSelection = prompt("Choose rock, paper, or scissors. First to five points win.", ''.toLowerCase());
+            /*let playerSelection = prompt("Choose rock, paper, or scissors. First to five points win.", ''.toLowerCase());*/
             let computerSelection = getComputerChoice();
             if(playerSelection === computerSelection) {
                 return ("You tied!");
-            }else if ((playerSelection === "rock" && computerSelection === "paper") || 
-                (playerSelection === "paper" && computerSelection === "scissors") || 
-                (playerSelection === "scissors" && computerSelection === "rock")) {
+            }else if ((playerSelection === "Rock" && computerSelection === "Paper") || 
+                (playerSelection === "Paper" && computerSelection === "Scissors") || 
+                (playerSelection === "Scissors" && computerSelection === "Rock")) {
                     computerPoints ++;
                     return ("You lose! " + computerSelection + " beats " + playerSelection);
-            }else if ((playerSelection === "rock" && computerSelection === "scissors") || 
-                (playerSelection === "paper" && computerSelection === "rock") || 
-                (playerSelection === "scissors" && computerSelection === "paper")) {
+            }else if ((playerSelection === "Rock" && computerSelection === "Scissors") || 
+                (playerSelection === "Paper" && computerSelection === "Rock") || 
+                (playerSelection === "Scissors" && computerSelection === "Paper")) {
                     playerPoints ++;
                     return ("You win! " + playerSelection + " beats " + computerSelection);
-            }else{
-                return ("Please type rock, paper, or scissors.");
-            }
+                }
         }
+        
 
-        function game() {
+        function game(playerSelection) {
             /* Loop round until player or computer reaches 5 points */
             for (let i = 0; playerPoints < 5 && computerPoints < 5; i++){
-                console.log(playRound());
+                console.log(playRound(playerSelection));
                 console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
                 }
                 if(playerPoints === 5){
                     return ("Congrats! You beat the computer!")
                 }else if(computerPoints ===5){
                     return ("Sorry you lose!")
-            }
+            } 
         }
-
-        console.log(game());
+        const buttons = document.querySelectorAll("#buttons button");
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                console.log(game(button.id));
+        });
+    });
 
     </script>
 </body>
