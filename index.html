@@ -54,6 +54,7 @@
             for (let i = 0; playerPoints < 5 && computerPoints < 5; i++){
                 console.log(playRound(playerSelection));
                 console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
+                return;
                 }
                 if(playerPoints === 5){
                     return ("Congrats! You beat the computer!")
