@@ -18,9 +18,7 @@
         <div class = "scoreboard-text">Your score: <span id = "player-score"></span></div>
         <div class = "scoreboard-text">Computer score: <span id = "computer-score"></span></div>
     </div>
-    <div id ="result">
-
-    </div>
+    <div id ="result"></div>
     <script>
         /* Define playerPoints and computerPoints to start at 0 */
         let playerPoints = 0;
@@ -65,8 +63,7 @@
                     document.getElementById("result").innerHTML = "Sorry you lose!";
                 }   
                 else{
-                console.log(playRound(playerSelection));
-                console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
+                document.getElementById("result").innerHTML = playRound(playerSelection);
                 document.getElementById("player-score").innerHTML = playerPoints;
                 document.getElementById("computer-score").innerHTML = computerPoints;
                 }              
