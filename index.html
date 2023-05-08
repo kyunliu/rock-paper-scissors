@@ -6,13 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <div id="buttons">
         <button id="Rock">Rock</button>
         <button id="Paper">Paper</button>
         <button id="Scissors">Scissors</button>
+    </div>
+    <div id="scoreboard">
+        <div class = "scoreboard-text">Your score: <span id = "player-score"></span></div>
+        <div class = "scoreboard-text">Computer score: <span id = "computer-score"></span></div>
+    </div>
+    <div id ="result">
+
     </div>
     <script>
         /* Define playerPoints and computerPoints to start at 0 */
@@ -49,24 +56,25 @@
         }
         
 
-        function game(playerSelection) {
+        function game(e) {
             /* Loop round until player or computer reaches 5 points */
-            for (let i = 0; playerPoints < 5 && computerPoints < 5; i++){
+            const playerSelection = event.target.id;
+                if(playerPoints === 5){
+                    document.getElementById("result").innerHTML = "Congrats! You beat the computer!";
+                }else if(computerPoints ===5){
+                    document.getElementById("result").innerHTML = "Sorry you lose!";
+                }   
+                else{
                 console.log(playRound(playerSelection));
                 console.log("You currently have " + playerPoints + " point(s). The computer has " + computerPoints + " point(s).");
-                return;
-                }
-                if(playerPoints === 5){
-                    return ("Congrats! You beat the computer!")
-                }else if(computerPoints ===5){
-                    return ("Sorry you lose!")
-            } 
-        }
+                document.getElementById("player-score").innerHTML = playerPoints;
+                document.getElementById("computer-score").innerHTML = computerPoints;
+                }              
+            }
+        
         const buttons = document.querySelectorAll("#buttons button");
         buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                console.log(game(button.id));
-        });
+            button.addEventListener('click', game)
     });
 
     </script>
