@@ -57,17 +57,23 @@
         function game(e) {
             /* Loop round until player or computer reaches 5 points */
             const playerSelection = event.target.id;
-                if(playerPoints === 5){
-                    document.getElementById("result").innerHTML = "Congrats! You beat the computer!";
-                }else if(computerPoints ===5){
-                    document.getElementById("result").innerHTML = "Sorry you lose!";
-                }   
-                else{
-                document.getElementById("result").innerHTML = playRound(playerSelection);
-                document.getElementById("player-score").innerHTML = playerPoints;
-                document.getElementById("computer-score").innerHTML = computerPoints;
-                }              
-            }
+            const result = playRound(playerSelection);                
+            document.getElementById("result").innerHTML = result;
+            document.getElementById("player-score").innerHTML = playerPoints;
+            document.getElementById("computer-score").innerHTML = computerPoints;
+
+            if(playerPoints === 5){
+                document.getElementById("result").innerHTML = "Congrats! You beat the computer!";
+                playerPoints = 0;
+                computerPoints = 0;
+            }else if(computerPoints ===5){
+                document.getElementById("result").innerHTML = "Sorry you lose!";
+                playerPoints = 0;
+                computerPoints = 0; 
+            }   
+
+        }            
+            
         
         const buttons = document.querySelectorAll("#buttons button");
         buttons.forEach((button) => {
