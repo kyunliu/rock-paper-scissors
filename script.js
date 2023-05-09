@@ -6,6 +6,13 @@ let computerPoints = 0;
 /* The computer will select from this array */
 const array = ["Rock", "Paper", "Scissors"];
 
+function disableButtons(){
+    buttons.forEach((button) => {
+        button.disabled = true;
+        return;
+    });
+}
+
 function resetGame(){
     playerPoints = 0;
     computerPoints = 0;
@@ -16,6 +23,9 @@ function resetGame(){
     if (playAgainBtn){
         playAgainBtn.remove();
     }
+    buttons.forEach((button) => {
+        button.disabled = false;
+    });
 }
 
 /* Using the Math function to select position in Array */
@@ -59,10 +69,7 @@ function game(e) {
         playAgainBtn.id = "reset-game";
         playAgainBtn.addEventListener("click", resetGame);
         document.getElementById("buttons").appendChild(playAgainBtn);
-        buttons.forEach((button) => {
-            button.disabled = true;
-            return;
-        });
+        disableButtons();
     }else if(computerPoints ===5){
         document.getElementById("result").innerHTML = "Sorry you lose!";
         const playAgainBtn = document.createElement("button");
@@ -70,10 +77,7 @@ function game(e) {
         playAgainBtn.id = "reset-game";
         playAgainBtn.addEventListener("click", resetGame);
         document.getElementById("buttons").appendChild(playAgainBtn);
-        buttons.forEach((button) => {
-            button.disabled = true;
-            return;
-        });
+        disableButtons();
         }   
 }            
             
