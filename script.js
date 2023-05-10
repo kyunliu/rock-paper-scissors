@@ -63,25 +63,25 @@ function game(e) {
     document.getElementById("computer-score").innerHTML = computerPoints;
 
     if(playerPoints === 5){
-        document.getElementById("result").innerHTML = "Congrats! You beat the computer!";
+        document.getElementById("result").innerHTML = "Congrats! You beat the computer! ";
         const playAgainBtn = document.createElement("button");
         playAgainBtn.innerText = "Play Again";
         playAgainBtn.id = "reset-game";
         playAgainBtn.addEventListener("click", resetGame);
-        document.getElementById("buttons").appendChild(playAgainBtn);
+        document.getElementById("result").appendChild(playAgainBtn);
         disableButtons();
     }else if(computerPoints ===5){
-        document.getElementById("result").innerHTML = "Sorry you lose!";
+        document.getElementById("result").innerHTML = "Sorry you lose! ";
         const playAgainBtn = document.createElement("button");
         playAgainBtn.innerText = "Play Again";
         playAgainBtn.id = "reset-game";
         playAgainBtn.addEventListener("click", resetGame);
-        document.getElementById("buttons").appendChild(playAgainBtn);
+        document.getElementById("result").appendChild(playAgainBtn);
         disableButtons();
         }   
 }            
             
 const buttons = document.querySelectorAll("#buttons button");
 buttons.forEach((button) => {
-    button.addEventListener('click', game)
+    button.addEventListener('click', game);
 });
